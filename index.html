@@ -119,3 +119,29 @@ function calculate() {
 
 </body>
 </html>
+<script>
+async function initiateSTKPush() {
+    const amount = parseFloat(document.getElementById("amount").value);
+    if (isNaN(amount) || amount < 50 || amount > 500) {
+        alert("Enter a valid amount between 50 and 500 KES");
+        return;
+    }
+
+    try {
+        const response = await fetch('/stkpush', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                amount: amount,
+                phone: prompt("Enter your phone number (2547XXXXXXXX):")
+            })
+        });
+
+        const data = await response.json();
+        alert(data.message);
+    } catch (err) {
+        console.error(err);
+        alert("Error initiating payment");
+    }
+}
+</script>
