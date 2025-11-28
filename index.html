@@ -22,6 +22,95 @@ function calculate() {
             "Error: Amount must be between 50 and 500.";
         return;
     }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment & Cash Back</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .result {
+            margin-top: 15px;
+            background: #e3ffe3;
+            padding: 10px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Payment & Cash Back Calculator</h2>
+    <p>Enter an amount between <strong>50 - 500 KES</strong> and see your 50% cash back reward.</p>
+
+    <label>Enter Amount:</label>
+    <input type="number" id="amount" placeholder="Enter amount (50 - 500)" />
+
+    <button onclick="calculate()">Calculate Cash Back</button>
+
+    <div class="result" id="resultBox"></div>
+
+    <hr>
+
+    <h3>Payment Details</h3>
+    <p>Make your payment to this Till Number:</p>
+    <h2 style="text-align:center; color:#d9534f;">4618834</h2>
+</div>
+
+<script>
+function calculate() {
+    const amount = parseFloat(document.getElementById("amount").value);
+    const resultBox = document.getElementById("resultBox");
+
+    if (isNaN(amount) || amount < 50 || amount > 500) {
+        resultBox.style.display = "block";
+        resultBox.style.background = "#ffe3e3";
+        resultBox.style.borderLeft = "4px solid #d9534f";
+        resultBox.innerHTML = "❌ Please enter a valid amount between 50 and 500 KES.";
+        return;
+    }
+
+    const cashback = amount * 0.5;
+
+    resultBox.style.display = "block";
+    resultBox.style.background = "#e3ffe3";
+    resultBox.style.borderLeft = "4px solid #28a745";
+    resultBox.innerHTML = `✔️ Amount Entered: <strong>${amount} KES</strong><br>💰 Your Cash Back: <strong>${cashback} KES</strong>`;
+}
+</script>
+
+</body>
+</html>
 
     let cashback = amount * 0.5;
     let tillNumber = "4618834";
