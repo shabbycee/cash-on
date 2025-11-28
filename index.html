@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cashback Payment System</title>
+</head>
+<body>
+
+<h2>Cashback Payment System</h2>
+
+<label>Enter Amount to Pay (50 - 500):</label>
+<input id="amount" type="number">
+<button onclick="calculate()">Submit</button>
+
+<p id="result"></p>
+
+<script>
+function calculate() {
+    let amount = parseFloat(document.getElementById("amount").value);
+
+    if (amount < 50 || amount > 500) {
+        document.getElementById("result").innerHTML =
+            "Error: Amount must be between 50 and 500.";
+        return;
+    }
+
+    let cashback = amount * 0.5;
+    let tillNumber = "4618834";
+
+    document.getElementById("result").innerHTML =
+        "Please proceed to pay Ksh " + amount +
+        " to Till Number: " + tillNumber +
+        "<br>You will receive a cashback of: Ksh " + cashback +
+        "<br><br>Thank you for using our service!";
+}
+</script>
+
+</body>
+</html>
